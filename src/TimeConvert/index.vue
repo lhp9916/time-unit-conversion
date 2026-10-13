@@ -220,7 +220,7 @@ h1 {
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 14px;
-  text-align: right;
+  text-align: left;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
