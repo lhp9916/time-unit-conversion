@@ -57,12 +57,16 @@ npm run build   # 构建到 dist/
 ## 目录结构
 
 ```
+assets/icon.svg             图标源文件（渲染成 public/logo.png）
 public/plugin.json          uTools 插件清单：功能 code、说明、触发词
 src/core/timeUnits.js       换算内核：单位表 / convert / parseInput / formatValue
 src/core/pluginWindow.js    插件窗口高度自适应，撑不开时回调切换双列
 src/TimeConvert/index.vue   换算界面
 src/App.vue                 uTools 进入 / 退出事件与功能路由
 ```
+
+图标是矢量画的：改 `assets/icon.svg` 后用任意 SVG 导出工具重新导出成 256×256 的
+`public/logo.png` 即可（uTools 插件图标要求 PNG、建议 256×256）。
 
 ## 测试
 

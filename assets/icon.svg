@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>时间单位换算</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#35735C" />
+      <stop offset="1" stop-color="#275C45" />
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#tile)" />
+  <g fill="#FFFFFF">
+    <rect x="156" y="120" width="200" height="28" rx="14" />
+    <rect x="156" y="364" width="200" height="28" rx="14" />
+    <path d="M168 148 H344 L256 249 Z" />
+    <path d="M168 364 H344 L256 263 Z" />
+  </g>
+</svg>
