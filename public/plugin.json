@@ -1,0 +1,18 @@
+{
+  "main": "index.html",
+  "logo": "logo.png",
+  "development": {
+    "main": "http://localhost:5173"
+  },
+  "features": [
+    {
+      "code": "time-unit-conversion",
+      "explain": "时间单位换算：年/月/周/天/时/分/秒/毫秒/微秒/纳秒",
+      "cmds": [
+        "时间换算",
+        "时间单位换算",
+        "shijianhuansuan"
+      ]
+    }
+  ]
+}
