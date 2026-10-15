@@ -48,10 +48,20 @@ function handleConvert(key) {
     return
   }
 
-  // 输入行保留用户原文，其余行按该行数值刷新。
-  UNITS.forEach((unit) => {
-    if (unit.key === key) return
-    values[unit.key] = formatValue(convert(parsed.value, key, unit.key))
+  // 先算完全部结果再更新，避免某个单位溢出时留下半套旧结果。
+  let conversions
+  try {
+    conversions = UNITS.filter((unit) => unit.key !== key).map((unit) => ({
+      key: unit.key,
+      value: formatValue(convert(parsed.value, key, unit.key))
+    }))
+  } catch (error) {
+    errors[key] = error instanceof RangeError ? error.message : '换算失败'
+    return
+  }
+
+  conversions.forEach(({ key: unitKey, value }) => {
+    values[unitKey] = value
   })
   baseKey.value = key
 }

@@ -46,6 +46,13 @@ describe('convert', () => {
     expect(convert(convert(3.5, 'day', 'nanosecond'), 'nanosecond', 'day')).toBeCloseTo(3.5, 10)
   })
 
+  it('避免中间计算溢出，并对超出可表示范围的结果报错', () => {
+    expect(convert(1e308, 'second', 'second')).toBe(1e308)
+    expect(formatValue(convert(1e308, 'second', 'year'))).toBe('3.17098e+300')
+    expect(() => convert(1e308, 'second', 'nanosecond')).toThrowError(RangeError)
+    expect(() => convert(Number.MIN_VALUE, 'second', 'year')).toThrowError(RangeError)
+  })
+
   it('未知单位抛错', () => {
     expect(() => convert(1, 'second', 'picosecond')).toThrowError(/未知单位/)
   })

@@ -29,7 +29,11 @@ export function convert(value, fromKey, toKey) {
   if (!from || !to) {
     throw new Error(`未知单位：${fromKey} -> ${toKey}`)
   }
-  return (value * from.nanoseconds) / to.nanoseconds
+  const result = value * (from.nanoseconds / to.nanoseconds)
+  if (!Number.isFinite(result) || (value !== 0 && result === 0)) {
+    throw new RangeError('换算结果超出可表示范围')
+  }
+  return result
 }
 
 export function formatValue(value) {

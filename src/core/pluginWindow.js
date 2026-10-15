@@ -39,6 +39,9 @@ export function syncPluginHeight(element, { onUnfit } = {}) {
     appliedHeight = height
     const target = Math.min(height, maxPluginHeight(utools))
 
+    // 目标高度被屏幕工作区截断时，内容无法完整显示，需要切换紧凑布局。
+    if (height > target) onUnfit?.()
+
     if (setHeight(target) === false) {
       onUnfit?.()
       return

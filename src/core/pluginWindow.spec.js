@@ -62,10 +62,12 @@ describe('syncPluginHeight', () => {
 
   it('内容超过上限时按屏幕可用高度截断', () => {
     const win = stubWindow({ workArea: 800 })
-    syncPluginHeight(stubElement(900))
+    const onUnfit = vi.fn()
+    syncPluginHeight(stubElement(900), { onUnfit })
     flush()
 
     expect(win.utools.setExpandHeight).toHaveBeenCalledWith(640)
+    expect(onUnfit).toHaveBeenCalledTimes(1)
   })
 
   it('缺少 getPrimaryDisplay 时回退到屏幕可用高度', () => {
